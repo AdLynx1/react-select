@@ -706,6 +706,16 @@ var Select$1 = function (_React$Component) {
 
 		var _this = possibleConstructorReturn(this, (Select.__proto__ || Object.getPrototypeOf(Select)).call(this, props));
 
+		_this.onMenuScrollToBottom = function () {
+			var _this$props = _this.props,
+			    loadOptions = _this$props.loadOptions,
+			    inputProps = _this$props.inputProps,
+			    onMenuScrollToBottom = _this$props.onMenuScrollToBottom;
+
+
+			onMenuScrollToBottom(loadOptions, inputProps.inputValue);
+		};
+
 		['clearValue', 'focusOption', 'getOptionLabel', 'handleInputBlur', 'handleInputChange', 'handleInputFocus', 'handleInputValueChange', 'handleKeyDown', 'handleMenuScroll', 'handleMouseDown', 'handleMouseDownOnArrow', 'handleMouseDownOnMenu', 'handleTouchEnd', 'handleTouchEndClearValue', 'handleTouchMove', 'handleTouchOutside', 'handleTouchStart', 'handleValueClick', 'onOptionRef', 'removeValue', 'selectValue'].forEach(function (fn) {
 			return _this[fn] = _this[fn].bind(_this);
 		});
@@ -1209,11 +1219,17 @@ var Select$1 = function (_React$Component) {
 	}, {
 		key: 'handleMenuScroll',
 		value: function handleMenuScroll(event) {
-			if (!this.props.onMenuScrollToBottom) return;
+			var _props = this.props,
+			    onMenuScrollToBottom = _props.onMenuScrollToBottom,
+			    loadOptions = _props.loadOptions,
+			    inputProps = _props.inputProps;
+
+
+			if (!onMenuScrollToBottom) return;
 			var target = event.target;
 
 			if (target.scrollHeight > target.offsetHeight && target.scrollHeight - target.offsetHeight - target.scrollTop <= 0) {
-				this.props.onMenuScrollToBottom();
+				this.onMenuScrollToBottom(loadOptions, inputProps.inputValue);
 			}
 		}
 	}, {
