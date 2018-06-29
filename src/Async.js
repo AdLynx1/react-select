@@ -84,7 +84,7 @@ export default class Async extends Component {
 		this._callback = null;
 	}
 
-	loadOptions (inputValue) {
+	loadOptions (inputValue, ...args) {
 		const { loadOptions } = this.props;
 		const cache = this._cache;
 
@@ -122,7 +122,7 @@ export default class Async extends Component {
 		// Ignore all but the most recent request
 		this._callback = callback;
 
-		const promise = loadOptions(inputValue, callback);
+		const promise = loadOptions(inputValue, callback, ...args);
 		if (promise) {
 			promise.then(
 				(data) => callback(null, data),
