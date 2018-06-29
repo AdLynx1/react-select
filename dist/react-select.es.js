@@ -1030,7 +1030,7 @@ var Select$1 = function (_React$Component) {
 			toOpen = this._focusAfterClear ? false : toOpen; //if focus happens after clear values, don't open dropdown yet.
 
 			if (this.props.onFocus) {
-				this.props.onFocus(event);
+				this.props.onFocus(event, this.props.loadOptions);
 			}
 
 			this.setState({
