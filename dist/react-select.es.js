@@ -1225,10 +1225,12 @@ var Select$1 = function (_React$Component) {
 			    inputProps = _props.inputProps;
 
 
+			console.log('scroll');
 			if (!onMenuScrollToBottom) return;
 			var target = event.target;
 
 			if (target.scrollHeight > target.offsetHeight && target.scrollHeight - target.offsetHeight - target.scrollTop <= 0) {
+				console.log('will onMenuScrollToBottom');
 				this.onMenuScrollToBottom(loadOptions, inputProps.inputValue);
 			}
 		}
